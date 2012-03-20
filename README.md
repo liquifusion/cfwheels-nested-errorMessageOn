@@ -3,20 +3,20 @@
 This plugin overrides `errorMessageOn` to accept arguments for nested properties. Basically, you can now use
 `association` and `position` arguments for your nested properties' error messages.
 
-## Examples
+## Example
 
 `user` model with `photos` association:
 
 	// In `init` method of `models/User.cfc`
 	hasMany("photos");
-	nestedProperties(association="photo", allowDelete=true);
+	nestedProperties(association="photos", allowDelete=true);
 
 Photos partial call in `views/users/_form.cfm` loops over whichever objects are set by model and controller:
 
 	#includePartial(user.photos)#
 
 Part of photo form partial at `views/users/_photo.cfm` uses new `association` and `position` arguments in
-`errorMessageOn`()`:
+`errorMessageOn()`:
 
 	#fileField(
 		label="Photo ###arguments.current#",
